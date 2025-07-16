@@ -5,7 +5,7 @@ import com.odougle.recipeapp.di.initKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-class App : Application() {
+class MainApp : Application() {
     private val androidModules = module{
 
     }
