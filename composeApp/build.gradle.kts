@@ -75,6 +75,8 @@ kotlin {
 
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
 
+            implementation("app.cash.sqldelight:primitive-adapters:2.1.0")
+
         }
         iosMain.dependencies {
             implementation("io.ktor:ktor-client-darwin:3.0.1")
