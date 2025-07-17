@@ -13,7 +13,6 @@ class DbHelper(
 
     suspend fun <Result: Any> withDatabase(block: suspend (RecipeAppCmpAppDb) -> Result) = mutex.withLock {
         if (db == null) db = createDb(driverFactory)
-
         return@withLock block(db!!)
     }
 
