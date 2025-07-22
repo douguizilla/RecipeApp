@@ -9,7 +9,7 @@ CREATE TABLE Recipe (
     area TEXT NOT NULL,
     imageUrl TEXT NOT NULL,
     youtubeLink TEXT NOT NULL,
-    ingredientes TEXT AS List<String> NOT NULL,
+    ingredients TEXT AS List<String> NOT NULL,
     instructions TEXT AS List<String> NOT NULL,
     isFavorite INTEGER NOT NULL,
     rating INTEGER NOT NULL,
@@ -18,19 +18,19 @@ CREATE TABLE Recipe (
 );
 
 insertRecipe:
-INSERT INTO Recipe(id, title, description, category, area, imageUrl, youtubeLink, ingredientes, instructions, isFavorite, rating, duration, difficulty) VALUES (
+INSERT INTO Recipe(id, title, description, category, area, imageUrl, youtubeLink, ingredients, instructions, isFavorite, rating, duration, difficulty) VALUES (
 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
 );
 
 upsertRecipe {
-UPDATE Recipe
-  SET title = :title,
+    UPDATE Recipe
+    SET title = :title,
     description = :description,
     category = :category,
     area = :area,
     imageUrl = :imageUrl,
     youtubeLink = :youtubeLink,
-    ingredientes = :ingredientes,
+    ingredients = :ingredients,
     instructions = :instructions,
     isFavorite = :isFavorite,
     rating = :rating,
@@ -38,8 +38,8 @@ UPDATE Recipe
     difficulty = :difficulty
     WHERE id = :id;
 
-    INSERT OR IGNORE INTO Recipe(id, title, description, category, area, imageUrl, youtubeLink, ingredientes, instructions, isFavorite, rating, duration, difficulty)
-    VALUES ( :id, :title, :description, :category, :area, :imageUrl, :youtubeLink, :ingredientes, :instructions, :isFavorite, :rating, :duration, :difficulty );
+    INSERT OR IGNORE INTO Recipe(id, title, description, category, area, imageUrl, youtubeLink, ingredients, instructions, isFavorite, rating, duration, difficulty)
+    VALUES(:id, :title, :description, :category, :area, :imageUrl, :youtubeLink, :ingredients, :instructions, :isFavorite, :rating, :duration, :difficulty);
 }
 
 selectAllRecipes:
@@ -56,7 +56,7 @@ SET title = ?,
     area = ?,
     imageUrl = ?,
     youtubeLink = ?,
-    ingredientes = ?,
+    ingredients = ?,
     instructions = ?,
     isFavorite = ?,
     rating = ?,
@@ -69,3 +69,6 @@ DELETE FROM Recipe WHERE id = ?;
 
 deleteAllRecipes:
 DELETE FROM Recipe;
+
+searchRecipeByText:
+SELECT * FROM Recipe WHERE title LIKE ('%' || :query || '%') OR description LIKE ('%' || :query || '%') OR ingredients LIKE ('%' || :query || '%');
