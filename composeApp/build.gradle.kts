@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
 
-    id("app.cash.sqldelight") version "2.1.0"
+    id("app.cash.sqldelight") version "2.0.2"
     kotlin("plugin.serialization") version "2.2.0"
 }
 
@@ -38,7 +38,7 @@ kotlin {
 
             implementation("io.insert-koin:koin-android:4.0.3")
 
-            implementation("app.cash.sqldelight:android-driver:2.1.0")
+            implementation("app.cash.sqldelight:android-driver:2.0.2")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -75,12 +75,12 @@ kotlin {
 
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
 
-            implementation("app.cash.sqldelight:primitive-adapters:2.1.0")
+            implementation("app.cash.sqldelight:primitive-adapters:2.0.2")
 
         }
         iosMain.dependencies {
             implementation("io.ktor:ktor-client-darwin:3.0.1")
-            implementation("app.cash.sqldelight:native-driver:2.1.0")
+            implementation("app.cash.sqldelight:native-driver:2.0.2")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
