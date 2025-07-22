@@ -17,8 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.odougle.recipeapp.features.designSystem.theme.RecipeAppCmpTheme
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import recipeapp.composeapp.generated.resources.Res
+import recipeapp.composeapp.generated.resources.app_name
 import recipeapp.composeapp.generated.resources.compose_multiplatform
 
 @Composable
@@ -33,7 +35,7 @@ fun App() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+                Text(stringResource(Res.string.app_name))
             }
             AnimatedVisibility(showContent) {
                 val greeting = remember { Greeting().greet() }
